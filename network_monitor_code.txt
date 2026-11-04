@@ -1,0 +1,91 @@
+
+from scapy.all import sniff, IP, TCP, UDP
+import logging
+import datetime
+
+# 1. Set up logging
+log_filename = (
+    f"network_traffic_log_"
+    f"{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+)
+
+logging.basicConfig(
+    filename=log_filename,
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+# 2. Define monitored ports
+suspicious_ports = {
+    22: "SSH",
+    23: "Telnet",
+    53: "DNS",
+    135: "DCE RPC",
+    139: "NetBIOS",
+    445: "SMB",
+    3389: "RDP",
+    4444: "Metasploit"
+}
+
+# 3. Process captured packets
+def process_packet(packet):
+
+    if packet.haslayer(IP):
+
+        src_ip = packet[IP].src
+        dst_ip = packet[IP].dst
+
+        protocol = "Unknown"
+        src_port = None
+        dst_port = None
+
+        if packet.haslayer(TCP):
+            protocol = "TCP"
+            src_port = packet[TCP].sport
+            dst_port = packet[TCP].dport
+
+        elif packet.haslayer(UDP):
+            protocol = "UDP"
+            src_port = packet[UDP].sport
+            dst_port = packet[UDP].dport
+
+        log_entry = (
+            f"Traffic: {protocol} | "
+            f"{src_ip}:{src_port} -> {dst_ip}:{dst_port}"
+        )
+
+        print(log_entry)
+        logging.info(log_entry)
+
+        # 4. Check monitored ports
+        if src_port in suspicious_ports or dst_port in suspicious_ports:
+
+            matched_port = (
+                dst_port if dst_port in suspicious_ports else src_port
+            )
+
+            alert_msg = (
+                f"[ALERT] Monitored Port Detected! "
+                f"{src_ip} -> {dst_ip} | "
+                f"Port: {matched_port} "
+                f"({suspicious_ports[matched_port]})"
+            )
+
+            print(alert_msg)
+            logging.warning(alert_msg)
+
+
+# 5. Start monitoring
+if __name__ == "__main__":
+
+    print("Starting real-time network traffic monitoring...")
+    print("Press CTRL + C to stop monitoring.")
+
+    try:
+        sniff(prn=process_packet, store=False)
+
+    except KeyboardInterrupt:
+        print("\nNetwork monitoring stopped.")
+
+    except Exception as error:
+        print(f"Error: {error}")
