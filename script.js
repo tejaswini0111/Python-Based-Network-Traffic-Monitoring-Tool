@@ -8,22 +8,12 @@
 const PROJECTS = [
   {
     id: "network-traffic-monitor",
-    eyebrow: "B.Tech Major Project · 2024–2025",
     title: "Python-Based Network Traffic Monitoring Tool",
     tagline: "A real-time packet monitor that logs every TCP/UDP packet and raises alerts on traffic to commonly abused ports.",
     tags: ["Python", "Scapy", "Packet Analysis", "Logging", "Threat Detection", "UML"],
-    meta: [
-      ["Type", "Final-year major project (team of 3)"],
-      ["Institution", "CVR College of Engineering (JNTUH)"],
-      ["Degree", "B.Tech CSE (Cyber Security)"],
-      ["Guide", "Dr. B. Vikranth"],
-    ],
     links: {
       github: "",   // GitHub repository with the source code
-      writeup: "",  // e.g. "Documentation_Final.pdf" uploaded to this repository
-      demo: "",     // demo video or live demo link
-      docs: "",     // technical documentation (UML diagrams, architecture)
-    },
+         },
     what: "A Python tool that watches live network traffic, records every TCP and UDP packet in a timestamped log file, and prints and logs an alert whenever a packet is headed for a port that attackers commonly abuse: SSH (22), Telnet (23), DNS (53), DCE RPC (135), NetBIOS (139), SMB (445), RDP (3389) and 4444 (associated with Metasploit).",
     why: "It was my final-year major project in Computer Science and Engineering (Cyber Security). Networks keep growing and legacy tools often struggle with real-time visibility, so we wanted to understand, by building it, how packet capture, logging and detection work end to end. These are the foundations behind SIEM and EDR tools.",
     objective: [
@@ -43,12 +33,10 @@ const PROJECTS = [
     did: [
       "Surveyed existing Python monitoring tools (Scapy, PyShark, Tshark) and documented their limits: scalability, real-time speed, dependency management and usability.",
       "Defined functional and non-functional requirements, and hardware tiers for small, medium and enterprise networks.",
-      "Designed the system with UML diagrams and a three-tier architecture: devices send packets to a sniffing app, which writes to log storage and raises alerts.",
       "Implemented the tool: created a timestamped log file, defined the suspicious-ports dictionary, wrote the packet-processing function and started live capture with Scapy.",
-      "Tested on a live Windows machine and verified the log entries and alerts in the output.",
-      "Wrote the full project report, including the viva question bank.",
+      "Tested on a live Windows machine and verified the log entries and alerts in the output."
     ],
-    role: "[Placeholder] This was a team of three. Replace this line with your own contribution, for example which modules you wrote, tested or documented.",
+   
     skills: [
       "Packet capture and protocol analysis (TCP, UDP, DNS)",
       "Python scripting for security tooling",
@@ -70,13 +58,7 @@ const PROJECTS = [
       "Logging every connection with timestamps supports incident investigation and audit.",
       "Planned extensions (threat-intelligence feeds, SOAR-style automated response, cloud monitoring) match how modern security teams work.",
     ],
-    evidence: [
-      { label: "Project report (PDF)", desc: "full write-up with requirements, design, implementation and viva Q&A", url: "" },
-      { label: "Source code repository", desc: "network_monitor.py and setup notes", url: "" },
-      { label: "Guide-signed project certificate", desc: "page 2 of the report, signed for the 2024–2025 academic year", url: "" },
-      { label: "UML and architecture diagrams", desc: "class, use case, activity, sequence diagrams and system architecture (report chapter 4)", url: "" },
-      { label: "Live output screenshot", desc: "terminal output showing traffic logs and alerts (report Figure 5.2.7)", url: "" },
-    ],
+   
     screenshots: [
       { label: "Installing Scapy", file: "images/01-install-scapy.png", src: "" },
       { label: "Suspicious ports setup", file: "images/02-suspicious-ports.png", src: "" },
