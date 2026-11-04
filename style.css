@@ -1,0 +1,73 @@
+:root{
+  --bg:#f6f8fb;--card:#ffffff;--text:#16202e;--muted:#5b6778;
+  --accent:#0b6bcb;--accent-soft:#e3f0fd;--line:#dfe5ee;--ph:#eef2f8;--warn:#fff6e0;--warn-line:#e8c872;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d1420;--card:#141d2c;--text:#e6ecf5;--muted:#9aa8bd;
+    --accent:#5aa9ff;--accent-soft:#16304f;--line:#243148;--ph:#18233a;--warn:#2b2412;--warn-line:#7a6425;
+  }
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.muted{color:var(--muted)}
+
+.top{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+.bar{display:flex;justify-content:space-between;align-items:center;height:56px}
+.brand{font-weight:700;text-decoration:none;color:var(--text)}
+nav a{text-decoration:none;font-weight:600}
+
+.hero{padding:40px 0 8px}
+.hero h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:0 0 8px}
+.lead{font-size:1.1rem;margin:0 0 8px}
+.section-title{margin:28px 0 14px;font-size:1.3rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:var(--text);transition:transform .15s,box-shadow .15s,border-color .15s}
+.card:hover,.card:focus-visible{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.12);border-color:var(--accent)}
+.card h3{margin:0 0 6px;font-size:1.15rem}
+.card p{margin:0 0 12px;color:var(--muted)}
+.more{font-weight:600;color:var(--accent)}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tag{background:var(--accent-soft);color:var(--accent);font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:999px}
+
+.back{display:inline-block;margin:24px 0 8px;font-weight:600;text-decoration:none}
+.eyebrow{margin:0;color:var(--accent);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em}
+.phead h1{margin:4px 0 8px;font-size:clamp(1.6rem,4.5vw,2.3rem);line-height:1.25}
+
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:18px 0}
+.meta div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.meta dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.meta dd{margin:2px 0 0;font-weight:600}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:10px;border:1px solid var(--accent);background:var(--accent);color:#fff;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+@media (prefers-color-scheme: dark){.btn{color:#08111d}}
+.btn:hover{filter:brightness(1.08)}
+.btn.ph{background:transparent;color:var(--muted);border:1.5px dashed var(--muted);cursor:default}
+.btn.ph:hover{filter:none}
+.btn small{font-weight:400;font-size:.75rem}
+
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 16px}
+.panel h2{margin:0 0 10px;font-size:1.15rem}
+.panel p{margin:0 0 10px}
+.panel ul,.panel ol{margin:0;padding-left:22px}
+.panel li{margin-bottom:6px}
+.note{background:var(--warn);border:1px dashed var(--warn-line);border-radius:10px;padding:10px 14px;margin-top:12px!important}
+.chip-ph{display:inline-block;border:1px dashed var(--muted);color:var(--muted);border-radius:6px;padding:0 8px;font-size:.8rem}
+
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.shot{margin:0}
+.shot img,.shot .box{width:100%;aspect-ratio:16/10;border-radius:10px;border:1px solid var(--line);object-fit:cover;background:var(--ph)}
+.shot .box{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:2px dashed var(--muted);color:var(--muted);text-align:center;padding:10px;font-size:.85rem}
+.shot figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+
+footer{margin-top:40px;padding:22px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 18px;border-radius:10px;font-size:.9rem;z-index:10}
+
+@media (max-width:520px){.panel{padding:16px}.btn{flex:1 1 100%;justify-content:center}}
